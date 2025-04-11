@@ -5,6 +5,9 @@ import { Country } from "@/types/country";
 import { Competition } from "@/types/competition";
 import { Team } from "@/types/teams";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+
 
 export default function ChoseTeam() {
     const [selectedCountry, setSelectedCountry] = useState("");
@@ -65,6 +68,14 @@ export default function ChoseTeam() {
             }
         }
     }, [selectedCompetition]);
+
+    const router = useRouter();
+
+    const handleChoseTeam = (teamKey: string) => {
+        const team = teams.find(team => team.team_key === teamKey);
+        localStorage.setItem("team", JSON.stringify(team));
+        router.push(`/home/${teamKey}`);
+    }
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gray-800 text-white relative p-4">
@@ -135,7 +146,10 @@ export default function ChoseTeam() {
                 {selectedTeam && (
                     <div className="mt-6 w-full text-center">
                         <button
-                            onClick={() => alert(`Continuando com o clube: ${selectedTeam}`)}
+                            onClick={() => {
+                                const teamKey = teams.find(team => team.team_name === selectedTeam)?.team_key;
+                                handleChoseTeam(teamKey!);
+                            }}
                             className="w-full mt-4 px-4 py-3 cursor-pointer bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
                         >
                             Continuar
