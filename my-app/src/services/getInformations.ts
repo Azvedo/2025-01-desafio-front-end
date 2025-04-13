@@ -1,4 +1,4 @@
-import api from "./api";
+import {api} from "./api";
 import dotenv from "dotenv";
 dotenv.config();
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY; // Ensure you have your API key in your .env file
