@@ -1,12 +1,20 @@
+import Link from "next/link";
 
 export default function Header() {
     return (
         <header className="text-white p-4 mb-2">
             <nav>
-                <ul className="flex space-x-36 text-lg font-semibold">
-                    <li><a href="#time" className="hover:underline">Time</a></li>
-                    <li><a href="#plantel" className="hover:underline">Plantel</a></li>
-                    <li><a href="#partidas" className="hover:underline">Partidas</a></li>
+                <ul className="flex md:space-x-36 gap-6 text-lg font-semibold">
+                    <li>
+                        <Link href="/home" className="hover:underline">
+                            Time
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/home/plantel" className="hover:underline">
+                            Plantel
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>

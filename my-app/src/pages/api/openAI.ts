@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         {
           role: "system",
           content:
-            "Você vai receber um nome de um time de futebol e você deve me retornar resumidamente a história desse time, com o ano de fundação, os principais títulos e o nome do estádio. Busque informções oficiais e não invente nada.",
+            "Você vai receber um nome de um time de futebol e você deve me retornar resumidamente a história desse time, com o ano de fundação, os principais títulos e o nome do estádio. Busque informções oficiais e não invente nada. Não caracteres especiais, apenas texto puro.",
         },
         { role: "user", content: prompt },
       ],

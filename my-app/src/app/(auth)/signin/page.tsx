@@ -15,14 +15,16 @@ export default function SignIn() {
         setLoading(true);
         setError(null);
         try {
+            await new Promise((resolve) => setTimeout(resolve, 500));
             const response = await login(email, password);
             localStorage.setItem("token", response.token);
+            localStorage.setItem("tokenTimestamp", new Date().getTime().toString());
             console.log("Login successful");
             router.push("/chose_team");
         } catch (error) {
             console.error("Login failed", error);
             setError("Email ou senha inválidos!");
-        }finally {
+        } finally {
             setLoading(false);
         }
     };

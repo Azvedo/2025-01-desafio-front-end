@@ -13,10 +13,23 @@ const Layout = ({ children }: LayoutProps) => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (token) {
-            setIsAuthenticated(true);
+        const tokenTimestamp = localStorage.getItem('tokenTimestamp');
+
+        if (token && tokenTimestamp) {
+            const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
+            const currentTime = new Date().getTime();
+            const tokenAge = currentTime - parseInt(tokenTimestamp, 10);
+
+            if (tokenAge < oneHour) {
+                setIsAuthenticated(true);
+            } else {
+                localStorage.removeItem('token');
+                localStorage.removeItem('tokenTimestamp');
+                setIsAuthenticated(false);
+                router.push('/signin');
+            }
         } else {
-            setIsAuthenticated(false); 
+            setIsAuthenticated(false);
             router.push('/signin');
         }
     }, [router]);

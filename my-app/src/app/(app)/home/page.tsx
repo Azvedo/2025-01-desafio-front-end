@@ -13,7 +13,6 @@ export default function TeamPage() {
     const [teamHistory, setTeamHistory] = useState<string | null>(null);
     const imgRef = useRef<HTMLImageElement | null>(null);
 
-    // Carregar o time do localStorage
     useEffect(() => {
         const storedTeam = localStorage.getItem("team");
         if (storedTeam) {
@@ -22,7 +21,7 @@ export default function TeamPage() {
         }
     }, []);
 
-    // Buscar informações do time após o estado `team` ser atualizado
+
     useEffect(() => {
         if (team?.team_name) {
             const fetchTeamInfo = async () => {
@@ -43,17 +42,17 @@ export default function TeamPage() {
             const colorThief = new ColorThief();
             const img = imgRef.current as HTMLImageElement;
 
-            // precisa esperar a imagem carregar totalmente
             if (img.complete) {
-                const palette = colorThief.getPalette(img, 2); // pega 2 cores principais
+                const palette = colorThief.getPalette(img, 2);
                 const [main, second] = palette;
 
                 const mainColor = `rgb(${main[0]}, ${main[1]}, ${main[2]})`;
                 const secondColor = `rgb(${second[0]}, ${second[1]}, ${second[2]})`;
 
                 setBgStyle({
-                    background: `linear-gradient(135deg, ${mainColor}, ${secondColor})`,
+                    background: `linear-gradient(90deg, ${mainColor}, ${secondColor})`,
                 });
+                localStorage.setItem("teamColors", JSON.stringify({ mainColor, secondColor }));
             }
         }
     };
@@ -62,7 +61,7 @@ export default function TeamPage() {
 
     return (
         <div
-            className="flex flex-col items-center justify-center h-full text-white"
+            className="flex flex-col items-center justify-center min-h-screen w-full text-white"
             style={bgStyle}
         >
             <Header />

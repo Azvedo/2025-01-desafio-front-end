@@ -1,12 +1,17 @@
 'use client'
 import { useState } from "react";
 import { signUp } from "@/services/auth";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isPasswordMismatch, setIsPasswordMismatch] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    
+    const router = useRouter();
 
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -18,16 +23,17 @@ export default function SignUp() {
         try {
             const response = await signUp(email, password);
             console.log("Sign up successful:", response);
-            // Redirect or show success message
+            router.push("/signin");
         } catch (error) {
             console.error("Error signing up:", error);
-            // Show error message
+            setError("Erro ao criar conta. Tente novamente mais tarde.");
         }
     };
 
     return (
         <div className="flex flex-col items-center justify-center p-4 mx-auto max-w-sm shadow-lg rounded-2xl">
             <h1 className="font-semibold text-center text-2xl my-10">Crie sua conta e acompanhe tudo do seu time do coração!</h1>
+            {error && <p className="text-red-500 text-sm">{error}</p>} 
             <form onSubmit={handleSignUp} method="POST" className="flex flex-col items-center justify-center w-full max-w-sm p-8 gap-2">
                 <input
                     type="email"

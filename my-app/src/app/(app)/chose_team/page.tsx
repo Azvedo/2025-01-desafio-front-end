@@ -74,7 +74,7 @@ export default function ChoseTeam() {
     const handleChoseTeam = (teamKey: string) => {
         const team = teams.find(team => team.team_key === teamKey);
         localStorage.setItem("team", JSON.stringify(team));
-        router.push(`/home/${teamKey}`);
+        router.push(`/home`);
     }
 
     return (
