@@ -8,7 +8,6 @@ export default function TeamPage() {
 
     useEffect(() => {
         const team = localStorage.getItem('team');
-        console.log('Team:', team);
         if (team) {
             const parsedTeam = JSON.parse(team);
             setPlayers(parsedTeam.players || []);
@@ -22,7 +21,7 @@ export default function TeamPage() {
             style={teamColors ? { background: `linear-gradient(90deg, ${JSON.parse(teamColors).mainColor}, ${JSON.parse(teamColors).secondColor})` } : {}}
         >
             <Header />
-            <div className="w-2/3 my-8 grid grid-cols-3 gap-4">
+            <div className="w-2/3 my-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {players.map((player) => (
                     <div key={player.player_key} className="bg-white shadow-md rounded-lg p-4 flex flex-col items-center">
                         <img
