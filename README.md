@@ -2,46 +2,91 @@
   <img src="https://github.com/user-attachments/assets/2acc5cab-7ec9-4cc6-a3fc-1fe80eceee73" alt="logo" style="width:100px"></img>
 </div>
 
-## Desafio Estagiarios Frontend
+# MyClub - Aplicação Interativa para Fãs de Futebol ⚽
 
-## Desafio: Construção de uma Aplicação Interativa com React e Next.js
-## Objetivo:
+## Descrição
+O **MyClub** é uma aplicação web desenvolvida com **React**, **Next.js**, **Tailwind CSS** e **TypeScript**, que permite aos usuários acompanhar informações sobre seus times de futebol favoritos. A aplicação inclui funcionalidades de autenticação, seleção de times, exibição de plantéis e histórico dos clubes.
 
-Desenvolver uma aplicação web utilizando React, Next.js, Tailwind CSS e TypeScript, focando na criação de telas responsivas, dinâmicas e intuitivas, aplicando conceitos de UI/UX.
-## Requisitos:
+---
 
-Criar pelo menos quatro telas:
-Tela de login - Uma página de login
+## Funcionalidades
+- **Autenticação**: Cadastro e login de usuários com validação de credenciais.
+- **Seleção de Times**: Escolha de times com base em países e competições.
+- **Exibição de Plantel**: Visualize os jogadores do time selecionado.
+- **Histórico do Time**: Informações detalhadas sobre o clube, incluindo ano de fundação, títulos e estádio.
+- **Interface Responsiva**: Design otimizado para dispositivos móveis e desktops.
+- **Efeitos Visuais**: Animações suaves e interativas com `framer-motion`.
 
-Tela de registro - Uma página com form para criar usuário
+---
 
-Tela inicial – Uma página de apresentação com um breve resumo sobre o conteúdo da aplicação.
+## Tecnologias Utilizadas
+- **Frontend**:
+  - React
+  - Next.js
+  - Tailwind CSS
+  - TypeScript
+- **Backend**:
+  - Node.js
+  - Express
+  - JSON Web Token (JWT) para autenticação
+- **APIs**:
+  - OpenAI API para geração de histórico dos times
+  - API externa para informações de times e competições
 
-Tela de informações – Exibe dados obtidos de uma API externa (exemplos: GBIF API, PokéAPI, ou outra de sua escolha).
+---
 
-Implementar navegação entre as páginas utilizando Next.js.
+## Pré-requisitos
+Certifique-se de ter as seguintes ferramentas instaladas:
+- **Node.js** (versão 18 ou superior)
+- **npm** ou **yarn** para gerenciar pacotes
+- **Git** para clonar o repositório
 
-Garantir que a aplicação seja responsiva e tenha um design intuitivo.
+---
 
-Utilizar boas práticas de organização de código e componentes.
+## Instalação
 
-## Adicional opcional
-Desenvolver as rotas de login e registro e realizar a integração com as telas
+### 1. Clone o Repositório
+```bash
+git clone https://github.com/seu-usuario/myclub.git
+cd myclub
+```
+### 2. Instale as Dependências
+#### Frontend:
+```bash
+cd my-app
+npm install
+npm run dev
+```
+#### Backend:
+```bash
+cd backend
+npm install
+```
 
-- Pode usar o next como backend ou implementar separado, sua decisão
-  
-## O que será avaliado:
-✅ Habilidade em criar telas responsivas e intuitivas 🖥️📱
-✅ Uso correto da navegação entre páginas no Next.js 🔄
-✅ Organização do código e estrutura do projeto 📂
-✅ Criatividade e design das telas 🎨
+### 3. Configure as Variáveis de Ambiente
+Crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes variáveis:
+```bash
+NEXT_PUBLIC_API_KEY=sua_chave_da_api
+NEXT_PUBLIC_OPENAI_API_KEY=sua_chave_da_openai
+```
 
-## Dicas para se destacar:
-Capriche na experiência do usuário, garantindo uma navegação fluida e acessível.
-
-Pense no design das telas para criar uma identidade visual coerente e atraente.
-
-Otimize o carregamento dos dados da API para melhorar a performance.
-
-Utilize animações e interações sutis para tornar a interface mais envolvente.
+### Estrutura de Pastas
+```markdown
+public/
+src/
+├── app/                # Páginas e layouts do Next.js
+├── components/         # Componentes reutilizáveis
+├── services/           # Serviços para chamadas de API
+├── types/              # Tipos TypeScript
+├── pages/api           # Next Routes
+└── styles/             # Estilos globais
+```
+```markdown
+src/
+├── controller/         # Controladores para rotas
+├── data/               # Dados em memória
+├── routes/             # Rotas da API
+├── services/           # Lógica de negócios
+└── index.js            # Inicialização do servidor
+```
     
